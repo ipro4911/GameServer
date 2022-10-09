@@ -1,0 +1,17 @@
+C:\Users\Can\Desktop\GameServer\bin\Debug\GameServer.exe
+C:\Users\Can\Desktop\GameServer\bin\Debug\GameServer.pdb
+C:\Users\Can\Desktop\GameServer\bin\Debug\MySql.Data.dll
+C:\Users\Can\Desktop\GameServer\obj\Debug\GameServer.exe
+C:\Users\Can\Desktop\GameServer\obj\Debug\GameServer.pdb
+C:\Users\Can\Desktop\WrMontana Public\GameServer\obj\Debug\GameServer.exe
+C:\Users\Can\Desktop\WrMontana Public\GameServer\obj\Debug\GameServer.pdb
+C:\Users\Can\Desktop\WrMontana Public\GameServer\obj\Debug\GameServer.csprojResolveAssemblyReference.cache
+C:\Users\Can\Desktop\WrMontana Public\GS\GameServer.exe
+C:\Users\Can\Desktop\WrMontana Public\GS\GameServer.pdb
+C:\Users\updates-acc\Desktop\Nuova cartella (19)\Nuova cartella (2)\Server - Copy (2)\bin\Release\GameServer\obj\Debug\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\updates-acc\Desktop\Nuova cartella (19)\Nuova cartella (2)\Server - Copy (2)\bin\Release\GameServer\obj\Debug\GameServer.exe
+C:\Users\updates-acc\Desktop\Nuova cartella (19)\Nuova cartella (2)\Server - Copy (2)\bin\Release\GameServer\obj\Debug\GameServer.pdb
+C:\Users\updates-acc\Desktop\Nuova cartella (19)\Nuova cartella (2)\Server - Copy (2)\bin\Release\GS\GameServer.exe
+C:\Users\updates-acc\Desktop\Nuova cartella (19)\Nuova cartella (2)\Server - Copy (2)\bin\Release\GS\GameServer.pdb
+C:\Users\updates-acc\Desktop\Nuova cartella (19)\Nuova cartella (2)\Server - Copy (2)\bin\Release\GameServer\obj\Debug\GameServer.csproj.CopyComplete
+C:\Users\updates-acc\Desktop\Nuova cartella (19)\Nuova cartella (2)\Server - Copy (2)\bin\Release\GameServer\obj\Debug\GameServer.csprojAssemblyReference.cache

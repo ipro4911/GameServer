@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--Project was exported from assembly: C:\Users\Can\Desktop\WrMontana Public\GS\GameServer.exe-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D94CF8B5-B676-4C5A-AC9C-17297D4B39B7}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>GameServer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\GS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>WarRock.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.18.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WarrockSw\Emu\ServerTT\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Country.cs" />
+    <Compile Include="DatabaseInfo.cs" />
+    <Compile Include="Game_Server\Game\PACKET_ROOMLIST_UPDATE.cs" />
+    <Compile Include="Game_Server\Game\PACKET_ROOM_SPAWN_TICK.cs" />
+    <Compile Include="Game_Server\Game\RoomData.cs" />
+    <Compile Include="Game_Server\Game\RoomMapData.cs" />
+    <Compile Include="Game_Server\Game\RoomPlantData.cs" />
+    <Compile Include="Game_Server\Game\RoomVehicle.cs" />
+    <Compile Include="Game_Server\Game\RoomZombie.cs" />
+    <Compile Include="Game_Server\Game\Scoreboard.cs" />
+    <Compile Include="Game_Server\Game\ScoreboardInformation.cs" />
+    <Compile Include="Game_Server\Game\VoteKick.cs" />
+    <Compile Include="Game_Server\Managers\CP_Emblem.cs" />
+    <Compile Include="Game_Server\Managers\SP_EmblemSystem.cs" />
+    <Compile Include="Game_Server\SecurityManager.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="LookupService.cs" />
+    <Compile Include="Region.cs" />
+    <Compile Include="RegionName.cs" />
+    <Compile Include="Game_Server\AntiCheatServer.cs" />
+    <Compile Include="Game_Server\ClanPendingUsers.cs" />
+    <Compile Include="Game_Server\ClanUsers.cs" />
+    <Compile Include="Game_Server\ClanRanking.cs" />
+    <Compile Include="Game_Server\ClanWar.cs" />
+    <Compile Include="Game_Server\Clan.cs" />
+    <Compile Include="Game_Server\Packet.cs" />
+    <Compile Include="Game_Server\Handler.cs" />
+    <Compile Include="Game_Server\PacketID.cs" />
+    <Compile Include="Game_Server\Server.cs" />
+    <Compile Include="Game_Server\GlobalServers.cs" />
+    <Compile Include="Game_Server\Program.cs" />
+    <Compile Include="Game_Server\CP_ClanRanking.cs" />
+    <Compile Include="Game_Server\SP_ClanRanking.cs" />
+    <Compile Include="Game_Server\RoomMode.cs" />
+    <Compile Include="Game_Server\HackPercentage.cs" />
+    <Compile Include="Game_Server\Placement.cs" />
+    <Compile Include="Game_Server\Room.cs" />
+    <Compile Include="Game_Server\VehicleSeat.cs" />
+    <Compile Include="Game_Server\Vehicle.cs" />
+    <Compile Include="Game_Server\Zombie.cs" />
+    <Compile Include="Game_Server\DB.cs" />
+    <Compile Include="Game_Server\Statment.cs" />
+    <Compile Include="Game_Server\Generic.cs" />
+    <Compile Include="Game_Server\IO.cs" />
+    <Compile Include="Game_Server\Log.cs" />
+    <Compile Include="Game_Server\Inventory.cs" />
+    <Compile Include="Game_Server\Messenger.cs" />
+    <Compile Include="Game_Server\OutboxItem.cs" />
+    <Compile Include="Game_Server\RetailSystem.cs" />
+    <Compile Include="Game_Server\TempItem.cs" />
+    <Compile Include="Game_Server\LoginEventStatus.cs" />
+    <Compile Include="Game_Server\User.cs" />
+    <Compile Include="Game_Server\Anti_Cheat\Client.cs" />
+    <Compile Include="Game_Server\Anti_Cheat\Structure\Handler.cs" />
+    <Compile Include="Game_Server\Anti_Cheat\Structure\Packet.cs" />
+    <Compile Include="Game_Server\Anti_Cheat\Structure\Packets.cs" />
+    <Compile Include="Game_Server\Anti_Cheat\Structure\PacketManager.cs" />
+    <Compile Include="Game_Server\Anti_Cheat\Data\CP_Authentication.cs" />
+    <Compile Include="Game_Server\Anti_Cheat\Data\SP_Connect.cs" />
+    <Compile Include="Game_Server\Configs\Console.cs" />
+    <Compile Include="Game_Server\Configs\Main.cs" />
+    <Compile Include="Game_Server\Configs\Server.cs" />
+    <Compile Include="Game_Server\Configs\Web.cs" />
+    <Compile Include="Game_Server\Game\SP_AchievementSystemStart.cs" />
+    <Compile Include="Game_Server\Game\SP_AchievementSystem.cs" />
+    <Compile Include="Game_Server\Game\CP_AchievementSystem.cs" />
+    <Compile Include="Game_Server\Game\SP_ShopCoupon.cs" />
+    <Compile Include="Game_Server\Game\CP_ShopCoupon.cs" />
+    <Compile Include="Game_Server\Game\SP_CustomCRCCheck.cs" />
+    <Compile Include="Game_Server\Game\SP_CustomMessageBox.cs" />
+    <Compile Include="Game_Server\Game\SP_CustomPremium.cs" />
+    <Compile Include="Game_Server\Game\SP_CustomShowFPS.cs" />
+    <Compile Include="Game_Server\Game\CP_Disconnect.cs" />
+    <Compile Include="Game_Server\Game\GunSmith.cs" />
+    <Compile Include="Game_Server\Game\CP_GunSmith.cs" />
+    <Compile Include="Game_Server\Game\SP_GunSmith.cs" />
+    <Compile Include="Game_Server\Game\SP_KillAnimation.cs" />
+    <Compile Include="Game_Server\Game\SP_KillCount.cs" />
+    <Compile Include="Game_Server\Game\SP_LobbyInfoUpdate.cs" />
+    <Compile Include="Game_Server\Game\CP_LoginEvent.cs" />
+    <Compile Include="Game_Server\Game\SP_LoginEvent.cs" />
+    <Compile Include="Game_Server\Game\SP_MaterialEarned.cs" />
+    <Compile Include="Game_Server\Game\SP_CustomWeed.cs" />
+    <Compile Include="Game_Server\Game\SP_CustomMLG.cs" />
+    <Compile Include="Game_Server\Game\SP_RandomBoxEvent.cs" />
+    <Compile Include="Game_Server\Game\RankingList.cs" />
+    <Compile Include="Game_Server\Game\SP_MyRank.cs" />
+    <Compile Include="Game_Server\Game\SP_SupplyBoxEvent.cs" />
+    <Compile Include="Game_Server\Game\CP_AntiCheat.cs" />
+    <Compile Include="Game_Server\Game\SP_AntiCheat.cs" />
+    <Compile Include="Game_Server\Game\SP_CustomSound.cs" />
+    <Compile Include="Game_Server\Game\SP_CARE_PACKAGE.cs" />
+    <Compile Include="Game_Server\Game\CP_CarePackage.cs" />
+    <Compile Include="Game_Server\Game\CP_CarePackageSendItem.cs" />
+    <Compile Include="Game_Server\Game\CP_Clan.cs" />
+    <Compile Include="Game_Server\Game\SP_CostumeEquip.cs" />
+    <Compile Include="Game_Server\Game\CP_CostumeEquip.cs" />
+    <Compile Include="Game_Server\Game\SP_CouponEvent.cs" />
+    <Compile Include="Game_Server\Game\CP_CouponEvent.cs" />
+    <Compile Include="Game_Server\Game\SP_CouponBuy.cs" />
+    <Compile Include="Game_Server\Game\CP_CouponBuy.cs" />
+    <Compile Include="Game_Server\Game\CP_CostumeBuy.cs" />
+    <Compile Include="Game_Server\Game\CP_Messenger.cs" />
+    <Compile Include="Game_Server\Game\SP_Messenger.cs" />
+    <Compile Include="Game_Server\Game\SP_MessengerFriends.cs" />
+    <Compile Include="Game_Server\Game\SP_MessengerMessage.cs" />
+    <Compile Include="Game_Server\Game\SP_MessengerFriendRequest.cs" />
+    <Compile Include="Game_Server\Game\CP_QuickJoinRoom.cs" />
+    <Compile Include="Game_Server\Game\CP_CashItemBuy.cs" />
+    <Compile Include="Game_Server\Game\CP_CharacterInfo.cs" />
+    <Compile Include="Game_Server\Game\CP_Chat.cs" />
+    <Compile Include="Game_Server\Game\SP_Chat.cs" />
+    <Compile Include="Game_Server\Game\SP_ColoredChat.cs" />
+    <Compile Include="Game_Server\Game\SP_ChatEvent.cs" />
+    <Compile Include="Game_Server\Game\CP_CreateRoom.cs" />
+    <Compile Include="Game_Server\Game\SP_CreateRoom.cs" />
+    <Compile Include="Game_Server\Game\SP_DeleteItem.cs" />
+    <Compile Include="Game_Server\Game\CP_DeleteItem.cs" />
+    <Compile Include="Game_Server\Game\SP_DeleteCostume.cs" />
+    <Compile Include="Game_Server\Game\CP_DeleteCostume.cs" />
+    <Compile Include="Game_Server\Game\CP_DinarItemBuy.cs" />
+    <Compile Include="Game_Server\Game\SP_DinarItemBuy.cs" />
+    <Compile Include="Game_Server\Game\SP_EndGame.cs" />
+    <Compile Include="Game_Server\Game\SP_ExpEvent.cs" />
+    <Compile Include="Game_Server\Game\SP_Event.cs" />
+    <Compile Include="Game_Server\Game\SP_EventCount.cs" />
+    <Compile Include="Game_Server\Game\SP_UpdateInventory.cs" />
+    <Compile Include="Game_Server\Game\SP_UpdateChristmasEquipment.cs" />
+    <Compile Include="Game_Server\Game\CP_ItemEquipment.cs" />
+    <Compile Include="Game_Server\Game\CP_JoinRoom.cs" />
+    <Compile Include="Game_Server\Game\SP_JoinRoom.cs" />
+    <Compile Include="Game_Server\Game\CP_LeaveRoom.cs" />
+    <Compile Include="Game_Server\Game\SP_LeaveRoom.cs" />
+    <Compile Include="Game_Server\Game\LevelUPItem.cs" />
+    <Compile Include="Game_Server\Game\SP_LevelUp.cs" />
+    <Compile Include="Game_Server\Game\CP_Spectate.cs" />
+    <Compile Include="Game_Server\Game\SP_Spectate.cs" />
+    <Compile Include="Game_Server\Game\CP_RoomHackMission.cs" />
+    <Compile Include="Game_Server\Game\CP_RoomInfoUpdate.cs" />
+    <Compile Include="Game_Server\Game\SP_RoomInfoUpdate.cs" />
+    <Compile Include="Game_Server\Game\CP_RoomInvite.cs" />
+    <Compile Include="Game_Server\Game\SP_RoomInvite.cs" />
+    <Compile Include="Game_Server\Game\CP_Outbox.cs" />
+    <Compile Include="Game_Server\Game\SP_Outbox.cs" />
+    <Compile Include="Game_Server\Game\SP_OutboxSend.cs" />
+    <Compile Include="Game_Server\Game\SP_OutboxUse.cs" />
+    <Compile Include="Game_Server\Game\Cryption.cs" />
+    <Compile Include="Game_Server\Game\CP_PingInformation.cs" />
+    <Compile Include="Game_Server\Game\SP_PingInformation.cs" />
+    <Compile Include="Game_Server\Game\SP_RoomInitializeUsers.cs" />
+    <Compile Include="Game_Server\Game\CP_RoomKick.cs" />
+    <Compile Include="Game_Server\Game\SP_RoomKick.cs" />
+    <Compile Include="Game_Server\Game\CP_RoomList.cs" />
+    <Compile Include="Game_Server\Game\SP_RoomList.cs" />
+    <Compile Include="Game_Server\Game\SP_RoomListUpdate.cs" />
+    <Compile Include="Game_Server\Game\SP_RoomThread.cs" />
+    <Compile Include="Game_Server\Game\SP_PlayerInfo.cs" />
+    <Compile Include="Game_Server\Game\SP_PlayerInfoSpectate.cs" />
+    <Compile Include="Game_Server\Game\SP_TimeAttackStage.cs" />
+    <Compile Include="Game_Server\Game\SP_TimeAttackEnd.cs" />
+    <Compile Include="Game_Server\Game\SP_TimeAttackEndLose.cs" />
+    <Compile Include="Game_Server\Game\SP_Signup.cs" />
+    <Compile Include="Game_Server\Game\CP_SwitchChannel.cs" />
+    <Compile Include="Game_Server\Game\SP_SwitchChannel.cs" />
+    <Compile Include="Game_Server\Game\SP_Unknown.cs" />
+    <Compile Include="Game_Server\Game\CP_UserList.cs" />
+    <Compile Include="Game_Server\Game\SP_UserList.cs" />
+    <Compile Include="Game_Server\Game\CP_WelcomePacket.cs" />
+    <Compile Include="Game_Server\Game\SP_WelcomePacket.cs" />
+    <Compile Include="Game_Server\Managers\CarePackageItem.cs" />
+    <Compile Include="Game_Server\Managers\CarePackage.cs" />
+    <Compile Include="Game_Server\Managers\ChannelManager.cs" />
+    <Compile Include="Game_Server\Managers\Channel.cs" />
+    <Compile Include="Game_Server\Managers\ClanManager.cs" />
+    <Compile Include="Game_Server\Managers\CommandManager.cs" />
+    <Compile Include="Game_Server\Managers\EventManager.cs" />
+    <Compile Include="Game_Server\Managers\EXPEventManager.cs" />
+    <Compile Include="Game_Server\Managers\GunSmithManager.cs" />
+    <Compile Include="Game_Server\Managers\MapDataManager.cs" />
+    <Compile Include="Game_Server\Managers\MapData.cs" />
+    <Compile Include="Game_Server\Managers\NoticeManager.cs" />
+    <Compile Include="Game_Server\Managers\PackageManager.cs" />
+    <Compile Include="Game_Server\Managers\RoomPacketManager.cs" />
+    <Compile Include="Game_Server\Managers\CP_RoomInviteOrQuickJoin.cs" />
+    <Compile Include="Game_Server\Managers\RoutineManager.cs" />
+    <Compile Include="Game_Server\Managers\VehicleManager.cs" />
+    <Compile Include="Game_Server\Managers\WordFilter.cs" />
+    <Compile Include="Game_Server\Managers\WordFilterManager.cs" />
+    <Compile Include="Game_Server\Managers\BanManager.cs" />
+    <Compile Include="Game_Server\Managers\PackageType.cs" />
+    <Compile Include="Game_Server\Managers\PackageItem.cs" />
+    <Compile Include="Game_Server\Managers\Item.cs" />
+    <Compile Include="Game_Server\Managers\ItemManager.cs" />
+    <Compile Include="Game_Server\Managers\LevelCalculator.cs" />
+    <Compile Include="Game_Server\Managers\Packet_Manager.cs" />
+    <Compile Include="Game_Server\Managers\UserManager.cs" />
+    <Compile Include="Game_Server\Managers\ZombieType.cs" />
+    <Compile Include="Game_Server\Managers\ZombieManager.cs" />
+    <Compile Include="Game_Server\Networking\ReceivedHandler.cs" />
+    <Compile Include="Game_Server\Networking\TCP.cs" />
+    <Compile Include="Game_Server\Networking\NetworkSocket.cs" />
+    <Compile Include="Game_Server\Networking\UDP.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomDataHandler.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_AmmoRecharge.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_ArtillerySupport.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_BackToRoom.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_ChangeVehicleSeat.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_Damage.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_DamageVehicle.cs" />
+    <Compile Include="Game_Server\Room_Data\SP_EntitySuicide.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_CaptureModeRequest.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_ZombieExplode.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_WorldDamage.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_Flag.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_Heal.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_JoinVehicle.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_KillLimitExplosiveChange.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_LeaveVehicle.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_MapChange.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_AutostartChange.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_KillLimitDeathmatchChange.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_PingChange.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_Place.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_PlacementUse.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_ReadyState.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_RepairVehicle.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_RoomReady.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_Spawn.cs" />
+    <Compile Include="Game_Server\Room_Data\SP_InitializeNewRound.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_RoomStart.cs" />
+    <Compile Include="Game_Server\Room_Data\Subtype.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_Suicide.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_SwitchTeam.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_TotalWarSpawnVehicle.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_UserLimit.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_VoteKick.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_WeaponSwitch.cs" />
+    <Compile Include="Game_Server\Room_Data\RoomHandler_ZombieDropUse.cs" />
+    <Compile Include="Game_Server\GameModes\CaptureMode.cs" />
+    <Compile Include="Game_Server\GameModes\DeathMatch.cs" />
+    <Compile Include="Game_Server\GameModes\Explosive.cs" />
+    <Compile Include="Game_Server\GameModes\FreeForAll.cs" />
+    <Compile Include="Game_Server\GameModes\HeroMode.cs" />
+    <Compile Include="Game_Server\GameModes\TimeAttack.cs" />
+    <Compile Include="Game_Server\GameModes\TotalWar.cs" />
+    <Compile Include="Game_Server\GameModes\ZombieMode.cs" />
+    <Compile Include="Game_Server\Web\WebManager.cs" />
+    <Compile Include="Game_Server\Web\WebServer.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WarRock.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
