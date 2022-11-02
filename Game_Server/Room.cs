@@ -68,6 +68,7 @@ namespace Game_Server
     public bool sleep;
         public int RoundTimeSpent;
         public int timespent;
+        public int emblemid;
     public bool cwcheck;
     public bool gameactive;
     public bool bombPlanted;
@@ -150,6 +151,7 @@ namespace Game_Server
     public TimeAttack timeattack;
     public CaptureMode capturemode;
     public HeroMode heromode;
+    public EscapeMode escapemode;
     public bool disposed;
     public int derbHeroKill;
     public int niuHeroKill;
@@ -195,110 +197,7 @@ namespace Game_Server
       }
     }
 
-        /*public bool RemoveUser(int slotId)
-        {
-          if (slotId >= 0 && this.users.ContainsKey(slotId))
-          {
-            User user1 = this.GetUser(slotId);
-            if (user1 != null)
-            {
-              int side = this.GetSide(user1);
-              if (user1.currentVehicle != null)
-                user1.currentVehicle.Leave(user1);
-              if (user1.channel == 2 || user1.channel == 3)
-              {
-                if (user1.isHacking)
-                {
-                  user1.isHacking = false;
-                  this.send((Packet) new SP_RoomHackMission(user1.roomslot, user1.hackingBase == 0 ? this.HackPercentage.BaseA : this.HackPercentage.BaseB, 3, user1.hackingBase));
-                }
-                if (user1.hasC4)
-                {
-                  this.send((Packet) new SP_Unknown((ushort) 29985, new object[8]
-                  {
-                    (object) 0,
-                    (object) 0,
-                    (object) 1,
-                    (object) 0,
-                    (object) 0,
-                    (object) 0,
-                    (object) 0,
-                    (object) 0
-                  }));
-                  user1.hasC4 = false;
-                  this.PickuppedC4 = false;
-                }
-              }
-              if (this.channel == 3)
-              {
-                user1.rKills = user1.rDeaths = user1.rHeadShots = -1;
-              }
-              else
-              {
-                user1.kills += user1.rKills;
-                user1.deaths += user1.rDeaths;
-                user1.headshots += user1.rHeadShots;
-              }
-              int roomslot = user1.roomslot;
-              foreach (User user2 in (IEnumerable<User>) this.users.Values)
-              {
-                if (user2.lastKillUser == roomslot)
-                  user2.lastKillUser = -1;
-              }
-              user1.room = (Room) null;
-              user1.roomslot = -1;
-              this.users[slotId] = (User) null;
-              User user3;
-              this.users.TryRemove(slotId, out user3);
-              if (slotId == this.master)
-              {
-                this.supermaster = false;
-                foreach (User user2 in this.users.Values.OrderByDescending<User, byte>((Func<User, byte>) (r => r.premium)).ThenByDescending<User, int>((Func<User, int>) (r => r.exp)).ToArray<User>())
-                {
-                  if (this.master != user2.roomslot)
-                  {
-                    this.master = user2.roomslot;
-                    break;
-                  }
-                }
-              }
-              if (this.channel == 3 && this.users.Count >= 1)
-                this.send((Packet) new SP_ZombieChangeTarget(this, roomslot));
-              else if (this.mode == 16 && (this.mapid == 90 || this.mapid == 91) && (this.deathmatch != null)) // && this.deathmatch.isGunGame))
-                //this.deathmatch.GunGameLeave(user1);
-              this.send((Packet) new SP_LeaveRoom(user1, this, slotId, this.master));
-              user1.send((Packet) new SP_LeaveRoom(user1, this, slotId, this.master));
-              user1.send((Packet) new SP_LobbyInfoUpdate(user1));
-              if (this.status != 1 && (this.users.Values.Where<User>((Func<User, bool>) (u => u != null)).Count<User>() <= 1 && this.channel != 3))
-                this.EndGame();
-              else if (this.users.Values.Where<User>((Func<User, bool>) (u => u != null)).Count<User>() <= 0)
-              {
-                this.disposed = true;
-                this.remove();
-              }
-              UserManager.UpdateUserlist(user1);
-              if (this.type == 1 && this.GetSideCount(side) < 4 && (this.cwcheck && this.gameactive) && (this.DerbRounds >= 3 || this.NIURounds >= 3 || (this.KillsDerbaranLeft <= this.kills - 5 || this.KillsNIULeft <= this.kills - 5)))
-              {
-                this.cwcheck = false;
-                int Side = side == 1 ? 0 : 1;
-                Clan clan1 = user1.clan;
-                Clan clan2 = this.GetClan(Side);
-                ++clan1.lose;
-                DB.RunQuery("UPDATE clans SET lose=lose+1 WHERE id='" + (object) clan2.id + "'");
-                clan1.AddClanWar(clan2.name, "0-0", false);
-                ++clan2.win;
-                clan2.exp += 250;
-                DB.RunQuery("UPDATE clans SET win=win+1, exp=exp+250 WHERE id='" + (object) clan2.id + "'");
-                clan2.AddClanWar(clan1.name, "0-0", true);
-                DB.RunQuery("INSERT INTO clans_clanwars (clanid1, clanid2, score, clanwon, timestamp) VALUES ('" + (object) this.GetClan(0).id + "', '" + (object) this.GetClan(1).id + "', '0-0', '" + (object) clan2.id + "', '" + (object) Game_Server.Generic.timestamp + "')");
-              }
-              this.ch.UpdateLobby(this);
-              return true;
-            }
-          }
-          this.send((Packet) new SP_LeaveRoom(0, this, slotId, this.master));
-          return false;
-        }*/
+       
         public bool RemoveUser(int slotId)
         {
             if (slotId >= 0 && users.ContainsKey(slotId))
@@ -378,10 +277,11 @@ namespace Game_Server
                     {
                         send(new SP_ZombieChangeTarget(this, roomslot));
                     }
-                    /*else if (this.mode == (int)RoomMode.FFA && this.ffa != null && this.ffa.isGunGame)
+                 /*   if (channel == 3 && users.Count <= 2)
                     {
-                        this.ffa.GunGameLeave(usr);
-                    }*/
+                        send(new SP_ZombieChangeTarget(this, roomslot));
+                    }
+                   */
 
                     send(new SP_LeaveRoom(usr, this, slotId, master)); // Send to the room about the user left
 
@@ -466,12 +366,11 @@ namespace Game_Server
     public void EndGame()
     {
 
-      if (this.EndGamefreeze || !this.gameactive)
-        return;
-      this.EndGamefreeze = false;
-      this.gameactive = false;
-      this.bombPlanted = false;
-      this.bombDefused = false;
+            if (EndGamefreeze || !gameactive) return;
+            EndGamefreeze = true;
+            gameactive = false;
+            bombPlanted = false;
+            bombDefused = false;
       this.timeleft = 180000;
       List<User> userList = new List<User>();
       userList.AddRange((IEnumerable<User>) this.users.Values);
@@ -805,7 +704,7 @@ namespace Game_Server
                             Items.Add(new LevelUPItem("CZ81", 1));
                             break;
                         case 46:
-                            Items.Add(new LevelUPItem("DF18", 1));
+                            Items.Add(new LevelUPItem("DF18", 10));
                             break;
                         case 47:
                             Items.Add(new LevelUPItem("CB09", 1));
@@ -1070,7 +969,7 @@ namespace Game_Server
         user1.send((Packet) new SP_LobbyInfoUpdate(user1));
         user1.AddDailyStats(this.channel != 3 ? user1.rKills : 0, user1.channel != 3 ? user1.rDeaths : 0, this.channel != 3 ? user1.rHeadShots : 0, user1.ExpEarned, user1.DinarEarned);
         user1.SaveStats();
-        if (mode == 1 || mode == 2 || mode == 3 || mode == 4 || mode == 5 || mode == 6 || mode == 7 || mode == 8 || mode == 9 || mode == 15 || mode == 16) ;
+        //if (mode == 1 || mode == 2 || mode == 3 || mode == 4 || mode == 5 || mode == 6 || mode == 7 || mode == 8 || mode == 9 || mode == 15 || mode == 16) ;
         user1.send((Packet) new SP_EndGame(user1));
         Inventory.AddItem(user1, "CB08", 5000);
             }
@@ -1138,7 +1037,7 @@ namespace Game_Server
       }));
       this.highestkills = this.NIURounds = this.DerbRounds = this.KillsNIULeft = this.KillsDerbaranLeft = 0;
       this.status = 1;
-     // this.EndGamefreeze = false;
+      this.EndGamefreeze = false;
     }
 
     public int FreeRoomSlotBySide(int side)
@@ -1173,6 +1072,7 @@ namespace Game_Server
       usr.playing = false;
       usr.lastKillUser = -1;
       usr.DinarEarned = usr.ExpEarned = 0;
+      
       if (this.mode != 16 || this.mapid != 90 && this.mapid != 91 || (!this.gameactive || this.deathmatch == null))// || !this.deathmatch.isGunGame))
         return;
       //this.deathmatch.GunGameJoin(usr);
@@ -1259,7 +1159,7 @@ namespace Game_Server
 
         public int GetIncubatorVehicleId()
         {
-            if (channel == 3 && mode == (int)RoomMode.Defence)
+            if (channel == 3 && mode == (int)RoomMode.Defence && mode == (int)RoomMode.Escape)
             {
                 var vehicle = Vehicles.Values.Where(r => r.Code == "EN16");
                 if (vehicle.Count() > 0)
@@ -2001,7 +1901,7 @@ namespace Game_Server
         }*/
         public bool Start()
         {
-            if (gameactive || status == 2 || users.Count < 2 && channel != 3 && !Configs.Server.Debug) return false;
+            if (gameactive || status == 2 || users.Count < 2 && channel != 3)  //&& !Configs.Server.Debug) return false;
             foreach (User usr in users.Values)
             {
                 if (usr.isReady == false && usr.roomslot != master)
@@ -2020,14 +1920,12 @@ namespace Game_Server
                     send(new Game.SP_Chat(usr, Game.SP_Chat.ChatType.Whisper, Configs.Server.SystemName + " >> Need at least " + Need + " for start a clanwar!!", 999, Configs.Server.SystemName));
                     return false;
                 }
-                /*else if (MapID == 33)
+
+                if (Configs.Server.Debug1 == 0)
                 {
-                    send(new SP_Chat(Configs.Server.SystemName, SP_Chat.ChatType.Whisper, Configs.Server.SystemName + " >> Beringia is closed due to a bug, sorry guys :/!!", RoomUser.SessionID, RoomUser.nickname));
-                    return false;
-                }*/
-                if (!Configs.Server.Debug)
-                {
-                    if (channel != 3 && users.Count <= 1)
+                    if (this.channel != 3 && users.Count <= 1)
+                    send(new Game.SP_Chat(usr, Game.SP_Chat.ChatType.Whisper, Configs.Server.SystemName + " >> Cant Start Solo Games!!", 999, Configs.Server.SystemName));
+
                         return false;
                 }
             }
@@ -2059,6 +1957,7 @@ namespace Game_Server
             this.timeattack = null;
             this.capturemode = null;
             this.heromode = null;
+            this.escapemode = null;
 
             switch (tmode)
             {
@@ -2112,14 +2011,19 @@ namespace Game_Server
                     }
                 case RoomMode.HeroMode:
                     {
-                        this.heromode = new     HeroMode(this);
+                        this.heromode = new HeroMode(this);
+                        break;
+                    }
+                case RoomMode.Escape: // WIP
+                    {
+                        this.escapemode = new EscapeMode(this);
                         break;
                     }
             }
 
             #endregion
 
-            if (mode == (int)RoomMode.Explosive || mode == (int)RoomMode.HeroMode)
+            if (mode == (int)RoomMode.Explosive || mode == (int)RoomMode.HeroMode || mode == (int)RoomMode.Annihilation || mode == (int)RoomMode.Escape)
             {
                 switch (rounds)
                 {
@@ -2140,7 +2044,7 @@ namespace Game_Server
                 {
                     case 0: kills = KillsDerbaranLeft = KillsNIULeft = 30; break;
                     case 1: kills = KillsDerbaranLeft = KillsNIULeft = 50; break;
-                    case -1:
+                 //   case -1:
                     case 2: kills = KillsDerbaranLeft = KillsNIULeft = 100; break;
                     case 3: kills = KillsDerbaranLeft = KillsNIULeft = 150; break;
                     case 4: kills = KillsDerbaranLeft = KillsNIULeft = 200; break;
@@ -2237,10 +2141,7 @@ namespace Game_Server
                 SpawnVehicles();
             }
 
-            //if (this.mode == (int)RoomMode.FFA && ffa != null && ffa.isGunGame)
-            //{
-            //    ffa.InitializeGunGame();
-            //}
+           
 
             foreach (User usr in users.Values)
             {
@@ -2306,7 +2207,9 @@ namespace Game_Server
     {
       if (UserManager.ServerUsers.Values.Where<User>((Func<User, bool>) (r =>
       {
-        if (r.room.id == this.id)
+          usr.Emblem = 2;
+          usr.emblemid = 2;
+          if (r.room.id == this.id)
           return r.roomslot == this.master;
         return false;
       })) == null)
@@ -2325,6 +2228,7 @@ namespace Game_Server
         usr.roomslot = 0;
         this.users.TryAdd(0, usr);
         this.master = usr.roomslot;
+        
         return true;
       }
       if (this.users.Count < this.maxusers)
@@ -2338,6 +2242,7 @@ namespace Game_Server
             if (this.GetSideCount(side) <= this.GetSideCount(side1))
             {
               usr.roomslot = this.FreeRoomSlotBySide(side);
+           //   usr.emblemid = usr.medalid;
               if (usr.roomslot != -1)
               {
                 if (this.gameactive)
@@ -2685,6 +2590,9 @@ namespace Game_Server
                     case RoomMode.TimeAttack:
                       this.timeattack.Update();
                       break;
+                    case RoomMode.Escape: // WIP
+                    this.escapemode.Update();
+                    break;
                   }
                 }
               }
@@ -2845,7 +2753,7 @@ namespace Game_Server
       this.disposed = true;
     }
 
-    public void InitializeUDP(User usr)
+    public void InitializeTCP(User usr)
     {
       try
       {
